@@ -10,44 +10,46 @@ mov ds,ax
 mov ah,1
 int 21h
 
-mov bl,al
+mov a,al
 
 mov dl, 10
 mov ah,2
 int 21h
 
-mov dh, 12
-mov dl, 35
-mov a,bl
-mov bx,0
-mov ah,2
-int 10h
-
 mov bl,a
+mov cx,4
+shr bl,cl
 
+cmp bl, 10
+jl l1
+add bl,37h
+jmp l2
+l1:
+add bl,30h
+
+l2:
 mov dl,bl
 mov ah,2
 int 21h
 
-mov dl, ':'
+mov bl,a
+mov cx,4
+shl bl,cl
+shr bl,cl
+
+cmp bl, 10
+jl l3
+add bl,37h
+jmp l4
+l3:
+add bl,30h
+l4:
+mov dl,bl
 mov ah,2
 int 21h
 
-mov al,bl
-aam
-mov bx,ax
-add bl, 30h
-add bh, 30h
-
-mov dl, bh
-mov ah,2
+mov ah,4ch
 int 21h
 
-mov dl, bl
-mov ah,2
-int 21h
-
-mov ah, 4ch
-int 21h
 code ends
 end start

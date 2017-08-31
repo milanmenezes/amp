@@ -1,0 +1,4 @@
+disp macro
+mov ah, 2
+int 21h
+endm

@@ -1,0 +1,4 @@
+kread macro
+mov ah, 1
+int 21h
+endm
